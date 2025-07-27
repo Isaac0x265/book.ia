@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Moon, Sun, BookOpen, FileText, Download, Eye, Loader2, Copy, Check } from 'lucide-react'
+import { Moon, Sun, BookOpen, FileText, Download, Loader2, Copy, Check } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import jsPDF from 'jspdf'
 import './App.css'
