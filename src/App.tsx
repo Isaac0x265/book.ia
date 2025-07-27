@@ -241,22 +241,53 @@ Make this content comprehensive, detailed, and valuable for readers seeking expe
 
     // Cover page for ebook mode
     if (mode === 'ebook') {
-      pdf.setFontSize(24)
+      const maxWidth = 170 // Maximum width for text content
+      let currentY = 60
+      
+      // Title with automatic sizing and wrapping
       pdf.setFont('helvetica', 'bold')
       const title = topic.toUpperCase()
-      const titleWidth = pdf.getTextWidth(title)
-      pdf.text(title, (pageWidth - titleWidth) / 2, 80)
       
+      // Start with large font and reduce if text is too wide
+      let titleFontSize = 24
+      pdf.setFontSize(titleFontSize)
+      
+      while (pdf.getTextWidth(title) > maxWidth && titleFontSize > 12) {
+        titleFontSize -= 2
+        pdf.setFontSize(titleFontSize)
+      }
+      
+      // If still too wide, split into multiple lines
+      const titleLines = pdf.splitTextToSize(title, maxWidth)
+      
+      // Center each line
+      titleLines.forEach((line: string, index: number) => {
+        const lineWidth = pdf.getTextWidth(line)
+        const xPosition = (pageWidth - lineWidth) / 2
+        pdf.text(line, xPosition, currentY + (index * (titleFontSize * 0.6)))
+      })
+      
+      currentY += titleLines.length * (titleFontSize * 0.6) + 20
+      
+      // Subtitle
       pdf.setFontSize(14)
       pdf.setFont('helvetica', 'normal')
       const subtitle = 'AI-Generated Comprehensive Guide'
-      const subtitleWidth = pdf.getTextWidth(subtitle)
-      pdf.text(subtitle, (pageWidth - subtitleWidth) / 2, 100)
+      const subtitleLines = pdf.splitTextToSize(subtitle, maxWidth)
       
+      subtitleLines.forEach((line: string, index: number) => {
+        const lineWidth = pdf.getTextWidth(line)
+        const xPosition = (pageWidth - lineWidth) / 2
+        pdf.text(line, xPosition, currentY + (index * 16))
+      })
+      
+      currentY += subtitleLines.length * 16 + 15
+      
+      // Date
       pdf.setFontSize(12)
       const date = new Date().toLocaleDateString()
       const dateWidth = pdf.getTextWidth(date)
-      pdf.text(date, (pageWidth - dateWidth) / 2, 120)
+      pdf.text(date, (pageWidth - dateWidth) / 2, currentY)
       
       pdf.addPage()
       yPosition = 30
