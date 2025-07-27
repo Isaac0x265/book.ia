@@ -1,0 +1,5 @@
+display a cost estimate
+display a Estimated time 
+display more stats like word counter and etc
+
+the total ebook came to around 7k words instead of 10k fix the prompts and ask the model to avoid oversimplfing
