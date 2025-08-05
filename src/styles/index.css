@@ -1,0 +1,26 @@
+/* 
+ * Styles Index
+ * ============
+ * This file provides an alternative way to import all styles.
+ * You can either import this file or import App.css (which imports the individual modules).
+ */
+
+/* Import all CSS modules in the correct order */
+
+/* 1. Variables first (needed by all other modules) */
+@import './variables.css';
+
+/* 2. Base styles and resets */
+@import './base.css';
+
+/* 3. Layout styles */
+@import './layout.css';
+
+/* 4. Component styles */
+@import './forms.css';
+@import './buttons.css';
+@import './progress.css';
+@import './content.css';
+
+/* 5. Responsive styles last (to override previous styles) */
+@import './responsive.css';
