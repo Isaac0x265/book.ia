@@ -1,4 +1,4 @@
-import { Mode } from '../types'
+import type { Mode } from '../types'
 
 export const generateSubtopics = async (mainTopic: string, apiKey: string, selectedModel: string): Promise<string[]> => {
   const response = await fetch('https://api.openai.com/v1/chat/completions', {

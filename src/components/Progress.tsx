@@ -1,5 +1,5 @@
 import { Loader2 } from 'lucide-react'
-import { Progress as ProgressType } from '../types'
+import type { Progress as ProgressType } from '../types'
 
 interface ProgressProps {
   progress: ProgressType

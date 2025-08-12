@@ -1,4 +1,4 @@
-import { Chapter } from '../types'
+import type { Chapter } from '../types'
 
 export const copyToClipboard = async (chapters: Chapter[]): Promise<boolean> => {
   try {

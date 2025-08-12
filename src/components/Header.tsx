@@ -1,5 +1,5 @@
 import { Moon, Sun, BookOpen, FileText } from 'lucide-react'
-import { Mode, Theme } from '../types'
+import type { Mode, Theme } from '../types'
 
 interface HeaderProps {
   mode: Mode

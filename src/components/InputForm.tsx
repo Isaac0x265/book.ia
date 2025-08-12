@@ -1,5 +1,5 @@
 import { Loader2 } from 'lucide-react'
-import { Mode, Progress as ProgressType } from '../types'
+import type { Mode, Progress as ProgressType } from '../types'
 import { MODELS } from '../constants/models'
 import { ModelSelect } from './ModelSelect'
 import { Progress } from './Progress'

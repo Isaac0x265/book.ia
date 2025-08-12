@@ -1,5 +1,5 @@
 import jsPDF from 'jspdf'
-import { Chapter, Mode } from '../types'
+import type { Chapter, Mode } from '../types'
 
 export const downloadPDF = async (chapters: Chapter[], topic: string, mode: Mode) => {
   const pdf = new jsPDF()

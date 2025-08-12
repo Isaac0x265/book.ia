@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Download, Copy, Check, BookOpen } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
-import { Chapter, Mode } from '../types'
+import type { Chapter, Mode } from '../types'
 import { downloadPDF } from '../utils/pdfGenerator'
 import { copyToClipboard } from '../utils/clipboard'
 

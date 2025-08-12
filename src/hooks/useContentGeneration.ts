@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Chapter, Progress, Mode } from '../types'
+import type { Chapter, Progress, Mode } from '../types'
 import { generateSubtopics, generateChapterContent } from '../utils/openAIService'
 
 export const useContentGeneration = () => {
