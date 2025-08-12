@@ -27,29 +27,20 @@ export const useContentGeneration = () => {
       setProgress({ current: 1, total: 3 })
       const subtopics = await generateSubtopics(topic, apiKey, selectedModel)
       
-      // Generate all chapters in parallel for much faster processing
+      // Generate all chapters
       setProgress({ current: 2, total: 3 })
       
-      const chapterPromises = subtopics.map((subtopic, i) => 
-        generateChapterContent(subtopic, i, topic, mode, apiKey, selectedModel).then(content => ({
-          title: mode === 'ebook' ? `Chapter ${i + 1}: ${subtopic}` : subtopic,
-          content,
-          index: i
-        }))
-      )
+      const chapters = []
+      for (let i = 0; i < subtopics.length; i++) {
+        const content = await generateChapterContent(subtopics[i], i, topic, mode, apiKey, selectedModel)
+        const title = mode === 'ebook' ? `Chapter ${i + 1}: ${subtopics[i]}` : subtopics[i]
+        chapters.push({ title, content })
+      }
       
-      // Wait for all chapters to complete simultaneously
-      const chapterResults = await Promise.all(chapterPromises)
-      
-      // Sort by index to maintain correct order
-      const generatedChapters = chapterResults
-        .sort((a, b) => a.index - b.index)
-        .map(({ title, content }) => ({ title, content }))
-      
-      setChapters(generatedChapters)
+      setChapters(chapters)
       setProgress({ current: 3, total: 3 })
 
-      return generatedChapters
+      return chapters
     } catch (error) {
       console.error('Error generating content:', error)
       alert('Error generating content. Please check your API key and try again.')
