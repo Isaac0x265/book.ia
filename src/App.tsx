@@ -12,10 +12,11 @@ function App() {
   const [mode, setMode] = useState<Mode>('ebook')
   const [topic, setTopic] = useState('')
   const [apiKey, setApiKey] = useState('')
-  const [selectedModel, setSelectedModel] = useState<string>('gpt-4o-mini')
+  const [selectedModel, setSelectedModel] = useState<string>('gpt-5-nano-2025-08-07')
   const [viewMode, setViewMode] = useState<ViewMode>('input')
 
   const handleGenerate = async () => {
+    
     try {
       const result = await generateContent(topic, apiKey, selectedModel, mode)
       if (result) {
@@ -30,7 +31,7 @@ function App() {
     setViewMode('input')
     resetGeneration()
   }
-
+console.log(selectedModel)
   return (
     <div className="app">
       <Header 

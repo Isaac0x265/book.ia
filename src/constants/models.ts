@@ -2,8 +2,8 @@ import type { Model } from '../types'
 
 export const MODELS: Model[] = [
   {
-    id: 'gpt-4o-mini',
-    name: 'GPT-4o Mini',
+    id: 'gpt-5-nano-2025-08-07',
+    name: 'gpt-5-nano-2025-08-07',
     description: 'Best value - Excellent quality, very affordable'
   },
   {

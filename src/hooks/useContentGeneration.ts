@@ -23,16 +23,19 @@ export const useContentGeneration = () => {
     setChapters([])
 
     try {
-      // Generate subtopics
+    // here it could have been ideal to keep the function logic in a separate file however im trying to
+    // keep a balance between complexity and readability
+
       setProgress({ current: 1, total: 3 })
       const subtopics = await generateSubtopics(topic, apiKey, selectedModel)
       
-      // Generate all chapters
+      
       setProgress({ current: 2, total: 3 })
       
       const chapters = []
       for (let i = 0; i < subtopics.length; i++) {
         const content = await generateChapterContent(subtopics[i], i, topic, mode, apiKey, selectedModel)
+        // Simple mode-based title formatting: ebook gets "Chapter X:" prefix, others don't
         const title = mode === 'ebook' ? `Chapter ${i + 1}: ${subtopics[i]}` : subtopics[i]
         chapters.push({ title, content })
       }

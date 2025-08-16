@@ -14,3 +14,7 @@ export const useTheme = () => {
 
   return { theme, setTheme, toggleTheme }
 }
+
+// i could have used a simpler approach to toggle the theme
+// however i wanted to feel like im building something from "scratch"
+// not that thats absurd logic but thats what i did
